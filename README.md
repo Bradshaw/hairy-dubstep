@@ -9,5 +9,5 @@ We are Mousseto and Gaeel. We are awesome and we are making a game for this Ludu
 Captain's log
 -------------
 
-+ ### Step One ###
-	Theme not yet announced, just creating a new project and making sure we're all ready to rock. (Dude, I was BORN ready)
++ Step One *pre-jam prep*
+	+ Theme not yet announced, just creating a new project and making sure we're all ready to rock. (Dude, I was BORN ready)
