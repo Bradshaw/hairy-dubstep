@@ -7,7 +7,8 @@ end
 
 
 function state:enter()
-
+	l = level.new(10,10)
+	level.set(l)
 end
 
 
@@ -54,12 +55,12 @@ end
 
 
 function state:update(dt)
-
+	level.update(dt)
 end
 
 
 function state:draw()
-
+	level.draw()
 end
 
 return state
