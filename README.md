@@ -9,7 +9,7 @@ We are Mousseto and Gaeel. We are awesome and we are making a game for this Ludu
 Captain's log
 -------------
 
-+ Step One *pre-jam prep*
++ Step One *Pre-jam prep*
 	+ Theme not yet announced, just creating a new project and making sure we're all ready to rock. (Dude, I was BORN ready)
 + Step Two *Designing the shit out of this game*
 	+ Theme is "10 Seconds"
@@ -18,3 +18,6 @@ Captain's log
 	+ You control a squad of SWAT agents
 	+ You scrub forwards and backwards in time and give orders
 	+ Only a friggin' amazing 10 Seconds will result in a 100% win
++ Step Three *Shit's pretty fricking tight, yo...*
+	+ Got a basic unit logging system in place
+	+ Need to make the units, the ai, the collisions, the shooting and fucking everything else (X.X)
