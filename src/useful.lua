@@ -21,3 +21,8 @@ function useful.clone(cloneMe)
 		end
 	end
 end
+
+function useful.lerp(p1, p2, n)
+	n = math.max(0,math.min(1, n))
+	return p1*(1-n)+p2*n
+end
