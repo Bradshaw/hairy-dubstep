@@ -68,7 +68,8 @@ end
 
 
 function state:draw()
-	--level.draw()
+	love.graphics.setBackgroundColor(73,91,98)
+	level.draw()
 	d:draw()
 	scrollbar.draw()
 end
