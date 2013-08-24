@@ -19,12 +19,10 @@ end
 
 
 function state:mousepressed(x, y, btn)
-	if not (x>scrollbar.xmin and x<scrollbar.xmax and y>scrollbar.y-15 and y<scrollbar.y+15) then
-		d:doToCur(function(self, ... )
-			self.tx = x
-			self.ty = y
-		end)
-	end
+	d:doToCur(function(self, ... )
+		self.tx = x
+		self.ty = y
+	end)
 end
 
 

@@ -4,8 +4,9 @@ scrollbar.max = global.simlength*global.simrate
 scrollbar.xmin = 20
 scrollbar.xmax = love.graphics.getWidth()-20
 scrollbar.y = love.graphics.getHeight() - 20
-scrollbar.playcur = 1
-scrollbar.cur = 1
+scrollbar.playcur = 0
+scrollbar.cur = 0
+scrollbar.scrubspeed = 0
 
 scrollbar.play = false
 
@@ -22,6 +23,7 @@ function scrollbar.toggle()
 end
 
 function scrollbar.update(dt)
+	--[[
 	if love.mouse.isDown("l") then
 		local xm = love.mouse.getX()
 		local ym = love.mouse.getY()
@@ -33,9 +35,21 @@ function scrollbar.update(dt)
 			scrollbar.playcur = scrollbar.cur
 		end
 	end
+	--]]
+	if love.keyboard.isDown("left") then
+		scrollbar.scrubspeed = useful.lerp(scrollbar.scrubspeed,-1,dt*10)
+	elseif love.keyboard.isDown("right") then
+		scrollbar.scrubspeed = useful.lerp(scrollbar.scrubspeed,1,dt*10)
+	else
+		scrollbar.scrubspeed = useful.lerp(scrollbar.scrubspeed,0,dt*10)
+	end
+	scrollbar.playcur = scrollbar.playcur + dt * global.simrate * scrollbar.scrubspeed * 2
+	scrollbar.cur = math.floor(scrollbar.playcur)
+
 	if scrollbar.play then
 		scrollbar.playcur = scrollbar.playcur + dt * global.simrate
 		scrollbar.cur = math.floor(scrollbar.playcur)
 	end
+	scrollbar.playcur = math.max(0,math.min(global.simlength*global.simrate,scrollbar.playcur))
 	scrollbar.cur = math.max(0,math.min(global.simlength*global.simrate,scrollbar.cur))
 end
