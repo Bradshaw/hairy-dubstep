@@ -71,6 +71,12 @@ function dude.sim(self, st)
 			direction = "up"
 		end
 		s.anim = dude.anims[direction]
+		if level.getTile(s.x,s.y).collide then
+			s.x = st.x
+			s.y = st.y
+			s.sx = s.sx-s.sx*self.fric
+			s.sy = s.sy-s.sy*self.fric
+		end
 	end
 
 	local spd = math.sqrt(s.sx*s.sx+s.sy*s.sy)

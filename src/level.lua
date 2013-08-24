@@ -32,6 +32,14 @@ function level.draw()
 	end
 end
 
+function level.get(x, y)
+	return level.current.map[x][y]
+end
+
+function level.getTile(px, py)
+	return level.get(math.floor(px/global.tilesize.x),math.floor(py/global.tilesize.y))
+end
+
 function level_mt:update( dt )
 	
 end

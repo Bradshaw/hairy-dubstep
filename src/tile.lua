@@ -16,5 +16,6 @@ end
 
 tile.types = {}
 tile.types.wall = tile.new()
+tile.types.wall.collide = true
 tile.types.floor = tile.new()
 tile.types.floor.draw = function() end
