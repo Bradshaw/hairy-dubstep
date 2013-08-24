@@ -7,3 +7,17 @@ function useful.tri(cond,yes,no)
 		return no
 	end
 end
+
+function useful.clone(cloneMe)
+	if cloneMe then
+		if type(cloneMe)=="table" then
+			local cln = {}
+			for k,v in pairs(cloneMe) do
+				cln[k] = useful.clone(v)
+			end
+			return cln
+		else
+			return cloneMe
+		end
+	end
+end
