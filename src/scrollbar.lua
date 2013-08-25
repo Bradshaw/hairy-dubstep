@@ -37,13 +37,13 @@ function scrollbar.update(dt)
 	end
 	--]]
 	if love.keyboard.isDown("left") then
-		scrollbar.scrubspeed = useful.lerp(scrollbar.scrubspeed,-1,dt*10)
+		scrollbar.scrubspeed = useful.lerp(scrollbar.scrubspeed,-useful.tri(scrollbar.play,2,1),dt*10)
 	elseif love.keyboard.isDown("right") then
-		scrollbar.scrubspeed = useful.lerp(scrollbar.scrubspeed,1,dt*10)
+		scrollbar.scrubspeed = useful.lerp(scrollbar.scrubspeed,useful.tri(scrollbar.play,2,1),dt*10)
 	else
 		scrollbar.scrubspeed = useful.lerp(scrollbar.scrubspeed,0,dt*10)
 	end
-	scrollbar.playcur = scrollbar.playcur + dt * global.simrate * scrollbar.scrubspeed * 2
+	scrollbar.playcur = scrollbar.playcur + dt * global.simrate * scrollbar.scrubspeed
 	scrollbar.cur = math.floor(scrollbar.playcur)
 
 	if scrollbar.play then
