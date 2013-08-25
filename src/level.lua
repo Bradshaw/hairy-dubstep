@@ -10,7 +10,7 @@ function level.new()
 	for i=1,global.mapsize.x do
 		self.map[i]={}
 		for j=1,global.mapsize.y do
-			self.map[i][j] = tile.new(i,j,useful.tri(math.random()>0.5,tile.types.wall,tile.types.floor))
+			self.map[i][j] = tile.new(i,j,useful.tri(math.random()>0.8,tile.types.wall,tile.types.floor))
 		end
 	end
 	return self
@@ -33,7 +33,7 @@ function level.draw()
 end
 
 function level.get(x, y)
-	return level.current.map[x][y]
+	return level.current.map[((x-1)%global.mapsize.x)+1][((y-1)%global.mapsize.y)+1]
 end
 
 function level.getTile(px, py)

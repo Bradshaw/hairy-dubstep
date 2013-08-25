@@ -3,6 +3,7 @@ require("tracked")
 dude = {}
 
 dude.im = love.graphics.newImage("images/terrorriste_marche_spritecheet.png")
+dude.idleim = love.graphics.newImage("images/terroriste_spritesheet_idle.png")
 dude.anims = {}
 dude.anims.left = {}
 dude.anims.right = {}
@@ -31,6 +32,7 @@ function dude.new(x,y)
 		ty = y,
 		frame = 1,
 		framecooldown = 10,
+		im = dude.idleim,
 		anim = dude.anims.down
 	}
 	local dat = {}
@@ -72,8 +74,14 @@ function dude.sim(self, st)
 		end
 		s.anim = dude.anims[direction]
 		if level.getTile(s.x,s.y).collide then
-			s.x = st.x
-			s.y = st.y
+			if not level.getTile(st.x,s.y).collide then
+				s.x = st.x
+			elseif not level.getTile(s.x,st.y).collide then
+				s.y = st.y
+			else
+				s.x = st.x
+				s.y = st.y
+			end
 			s.sx = s.sx-s.sx*self.fric
 			s.sy = s.sy-s.sy*self.fric
 		end
@@ -90,7 +98,10 @@ function dude.sim(self, st)
 		end
 	end
 	if spd<0.1 then
-		s.frame = 1
+		s.framecooldown = s.framecooldown-0.5
+		s.im = dude.idleim
+	else
+		s.im = dude.im
 	end
 
 
@@ -101,5 +112,5 @@ function dude.draw(self)
 	local st = self:get(scrollbar.cur)
 	--love.graphics.rectangle("fill",st.x-3,st.y-3,6,6)
 	love.graphics.circle("line",st.tx,st.ty,8)
-	love.graphics.drawq(dude.im, st.anim[st.frame], st.x, st.y, 0, 1, 1, 25, 57)
+	love.graphics.drawq(st.im, st.anim[st.frame], st.x, st.y, 0, 1, 1, 25, 57)
 end
